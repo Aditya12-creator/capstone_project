@@ -3,25 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhotoShare - Share Your Moments</title>
+    <title>PixelVibe - Share Your World</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- Header with Glass Effect -->
+    <header class="header glass-effect">
         <div class="container">
             <div class="navbar">
                 <div class="brand">
-                    <h1>📸 PhotoShare</h1>
+                    <div class="logo-container">
+                        <i class="fas fa-camera-retro logo-icon"></i>
+                        <h1 class="logo-text">PixelVibe</h1>
+                    </div>
                 </div>
                 <nav class="nav-links">
-                    <a href="#home" class="nav-link active">Home</a>
-                    <a href="#upload" class="nav-link">Upload</a>
-                    <a href="#profile" class="nav-link">Profile</a>
+                    <a href="#home" class="nav-link active" data-section="home">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#explore" class="nav-link" data-section="explore">
+                        <i class="fas fa-compass"></i>
+                        <span>Explore</span>
+                    </a>
+                    <a href="#upload" class="nav-link" data-section="upload">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Upload</span>
+                    </a>
+                    <a href="#profile" class="nav-link" data-section="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
                 </nav>
+                <div class="theme-toggle">
+                    <i class="fas fa-moon" id="themeToggle"></i>
+                </div>
             </div>
         </div>
     </header>
@@ -31,44 +62,154 @@
         <div class="container">
             <!-- Home Section -->
             <section id="home" class="section active">
-                <div class="welcome-banner">
-                    <h2>Welcome to PhotoShare</h2>
-                    <p>Share your favorite moments with friends and family</p>
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="gradient-text">Capture</span> & 
+                            <span class="gradient-text">Share</span>
+                            <br>Your Amazing Moments
+                        </h1>
+                        <p class="hero-subtitle">Join millions of creators sharing their stories through stunning visuals</p>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number" id="totalPhotosHero">0</div>
+                                <div class="stat-label">Photos Shared</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="totalLikesHero">0</div>
+                                <div class="stat-label">Likes Given</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="totalCommentsHero">0</div>
+                                <div class="stat-label">Comments</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="floating-photos">
+                            <div class="floating-photo photo-1"></div>
+                            <div class="floating-photo photo-2"></div>
+                            <div class="floating-photo photo-3"></div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="photos-grid" id="photosGrid">
-                    <!-- Photos will be dynamically loaded here -->
+                <div class="section-header">
+                    <h2>Latest Moments</h2>
+                    <div class="view-toggle">
+                        <button class="toggle-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="toggle-btn" data-view="masonry">
+                            <i class="fas fa-columns"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="photos-container">
+                    <div class="photos-grid" id="photosGrid">
+                        <!-- Photos will be dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Explore Section -->
+            <section id="explore" class="section">
+                <div class="explore-header">
+                    <h2>Explore Trending</h2>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">All</button>
+                        <button class="filter-tab" data-filter="nature">Nature</button>
+                        <button class="filter-tab" data-filter="city">City</button>
+                        <button class="filter-tab" data-filter="portrait">Portrait</button>
+                        <button class="filter-tab" data-filter="art">Art</button>
+                    </div>
+                </div>
+                <div class="trending-photos" id="trendingPhotos">
+                    <!-- Trending photos will be loaded here -->
                 </div>
             </section>
 
             <!-- Upload Section -->
             <section id="upload" class="section">
-                <div class="upload-container">
-                    <h2>Upload New Photo</h2>
+                <div class="upload-container glass-effect">
+                    <div class="upload-header">
+                        <h2>Share Your Story</h2>
+                        <p>Upload and share your amazing moments with the world</p>
+                    </div>
+                    
                     <form id="uploadForm" class="upload-form">
-                        <div class="file-upload">
-                            <label for="photoInput" class="file-label">
-                                <div class="upload-icon">📷</div>
-                                <span>Click to select photo</span>
-                            </label>
+                        <div class="file-upload-area" id="fileUploadArea">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h3>Drag & Drop your photo here</h3>
+                            <p>or click to browse</p>
                             <input type="file" id="photoInput" accept="image/*" class="file-input">
                         </div>
                         
-                        <div class="preview-container" id="previewContainer">
-                            <img id="previewImage" class="preview-image" alt="Preview">
+                        <div class="preview-section" id="previewSection">
+                            <div class="preview-container">
+                                <img id="previewImage" class="preview-image" alt="Preview">
+                                <div class="image-filters">
+                                    <h4>Apply Filter</h4>
+                                    <div class="filter-options">
+                                        <button type="button" class="filter-btn active" data-filter="none">Original</button>
+                                        <button type="button" class="filter-btn" data-filter="vintage">Vintage</button>
+                                        <button type="button" class="filter-btn" data-filter="dramatic">Dramatic</button>
+                                        <button type="button" class="filter-btn" data-filter="warm">Warm</button>
+                                        <button type="button" class="filter-btn" data-filter="cool">Cool</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="upload-details">
+                                <div class="form-group">
+                                    <label for="photoTitle">
+                                        <i class="fas fa-heading"></i>
+                                        Title
+                                    </label>
+                                    <input type="text" id="photoTitle" placeholder="Give your photo a catchy title..." required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="photoDescription">
+                                        <i class="fas fa-align-left"></i>
+                                        Description
+                                    </label>
+                                    <textarea id="photoDescription" placeholder="Tell the story behind this photo..." rows="3"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="photoCategory">
+                                        <i class="fas fa-tag"></i>
+                                        Category
+                                    </label>
+                                    <select id="photoCategory" required>
+                                        <option value="">Select a category</option>
+                                        <option value="nature">Nature</option>
+                                        <option value="city">City</option>
+                                        <option value="portrait">Portrait</option>
+                                        <option value="art">Art</option>
+                                        <option value="food">Food</option>
+                                        <option value="travel">Travel</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="photoTags">
+                                        <i class="fas fa-hashtag"></i>
+                                        Tags
+                                    </label>
+                                    <input type="text" id="photoTags" placeholder="Add tags separated by commas...">
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary btn-upload">
+                                    <i class="fas fa-share"></i>
+                                    Share Photo
+                                </button>
+                            </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="photoTitle">Title</label>
-                            <input type="text" id="photoTitle" placeholder="Enter photo title" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="photoDescription">Description</label>
-                            <textarea id="photoDescription" placeholder="Write a description..." rows="3"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Share Photo</button>
                     </form>
                 </div>
             </section>
@@ -76,22 +217,89 @@
             <!-- Profile Section -->
             <section id="profile" class="section">
                 <div class="profile-container">
-                    <div class="profile-header">
-                        <div class="profile-avatar">👤</div>
-                        <div class="profile-info">
-                            <h2>Beatle</h2>
-                            <p>Photography Enthusiast</p>
-                            <div class="profile-stats">
-                                <span><strong id="totalPhotos">0</strong> Photos</span>
-                                <span><strong id="totalLikes">0</strong> Likes</span>
+                    <div class="profile-header glass-effect">
+                        <div class="profile-cover">
+                            <div class="profile-avatar">
+                                <img src="./photos/ProfilePic.jpg" alt="Profile" id="profileImage">
+                                <div class="avatar-overlay">
+                                    <i class="fas fa-camera"></i>
+                                </div>
                             </div>
+                        </div>
+                        <div class="profile-info">
+                            <h2 id="profileName">Aditya Kumar</h2>
+                            <p id="profileBio">Visual Storyteller | Photography Enthusiast | Capturing life's beautiful moments</p>
+                            <div class="profile-stats">
+                                <div class="stat-item">
+                                    <strong id="totalPhotos">0</strong>
+                                    <span>Photos</span>
+                                </div>
+                                <div class="stat-item">
+                                    <strong id="totalLikes">0</strong>
+                                    <span>Likes</span>
+                                </div>
+                                <div class="stat-item">
+                                    <strong id="totalComments">0</strong>
+                                    <span>Comments</span>
+                                </div>
+                                <div class="stat-item">
+                                    <strong id="profileViews">1,234</strong>
+                                    <span>Views</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary" id="editProfileBtn">
+                                <i class="fas fa-edit"></i>
+                                Edit Profile
+                            </button>
                         </div>
                     </div>
                     
-                    <div class="profile-photos">
-                        <h3>My Photos</h3>
-                        <div class="photos-grid" id="userPhotosGrid">
-                            <!-- User photos will be loaded here -->
+                    <div class="profile-content">
+                        <div class="profile-tabs">
+                            <button class="tab-btn active" data-tab="photos">
+                                <i class="fas fa-images"></i>
+                                My Photos
+                            </button>
+                            <button class="tab-btn" data-tab="liked">
+                                <i class="fas fa-heart"></i>
+                                Liked Photos
+                            </button>
+                            <button class="tab-btn" data-tab="achievements">
+                                <i class="fas fa-trophy"></i>
+                                Achievements
+                            </button>
+                        </div>
+                        
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="photos-tab">
+                                <div class="photos-grid" id="userPhotosGrid">
+                                    <!-- User photos will be loaded here -->
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="liked-tab">
+                                <div class="photos-grid" id="likedPhotosGrid">
+                                    <!-- Liked photos will be loaded here -->
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="achievements-tab">
+                                <div class="achievements-grid">
+                                    <div class="achievement-card">
+                                        <i class="fas fa-camera achievement-icon"></i>
+                                        <h4>First Upload</h4>
+                                        <p>Shared your first photo</p>
+                                    </div>
+                                    <div class="achievement-card">
+                                        <i class="fas fa-heart achievement-icon"></i>
+                                        <h4>Popular Creator</h4>
+                                        <p>Received 50+ likes</p>
+                                    </div>
+                                    <div class="achievement-card locked">
+                                        <i class="fas fa-star achievement-icon"></i>
+                                        <h4>Trending Star</h4>
+                                        <p>Get featured in trending</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -99,30 +307,98 @@
         </div>
     </main>
 
-    <!-- Photo Modal -->
+    <!-- Enhanced Photo Modal -->
     <div id="photoModal" class="modal">
+        <div class="modal-backdrop"></div>
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <img id="modalImage" class="modal-image" alt="Full size photo">
-            <div class="modal-info">
-                <h3 id="modalTitle"></h3>
-                <p id="modalDescription"></p>
-                <div class="modal-actions">
-                    <button class="btn btn-secondary" id="modalLikeBtn">
-                        <span id="modalLikeIcon">❤️</span>
-                        <span id="modalLikeCount">0</span>
-                    </button>
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modalImage" class="modal-image" alt="Full size photo">
+                    <div class="image-actions">
+                        <button class="action-btn" id="downloadBtn">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="action-btn" id="shareBtn">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="comments-section">
-                    <h4>Comments</h4>
-                    <div id="commentsList" class="comments-list"></div>
-                    <form id="commentForm" class="comment-form">
-                        <input type="text" id="commentInput" placeholder="Add a comment..." required>
-                        <button type="submit" class="btn btn-primary">Post</button>
-                    </form>
+                
+                <div class="modal-sidebar">
+                    <div class="photo-header">
+                        <div class="author-info">
+                            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=50" alt="Author" class="author-avatar">
+                            <div class="author-details">
+                                <h4 id="modalAuthor">Alex Johnson</h4>
+                                <span id="modalDate">2 hours ago</span>
+                            </div>
+                        </div>
+                        <button class="follow-btn">
+                            <i class="fas fa-plus"></i>
+                            Follow
+                        </button>
+                    </div>
+                    
+                    <div class="photo-details">
+                        <h3 id="modalTitle"></h3>
+                        <p id="modalDescription"></p>
+                        <div class="photo-tags" id="modalTags"></div>
+                    </div>
+                    
+                    <div class="photo-stats">
+                        <div class="stat-row">
+                            <button class="stat-btn like-btn" id="modalLikeBtn">
+                                <i class="fas fa-heart" id="modalLikeIcon"></i>
+                                <span id="modalLikeCount">0</span>
+                            </button>
+                            <button class="stat-btn">
+                                <i class="fas fa-comment"></i>
+                                <span id="modalCommentCount">0</span>
+                            </button>
+                            <button class="stat-btn">
+                                <i class="fas fa-eye"></i>
+                                <span>1.2k</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="comments-section">
+                        <div class="comments-header">
+                            <h4>Comments</h4>
+                        </div>
+                        <div class="comments-list" id="commentsList">
+                            <!-- Comments will be loaded here -->
+                        </div>
+                        <form class="comment-form" id="commentForm">
+                            <div class="comment-input-container">
+                                <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=40" alt="You" class="comment-avatar">
+                                <input type="text" id="commentInput" placeholder="Add a comment..." required>
+                                <button type="submit" class="comment-submit">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
     </div>
 
     <script src="script.js"></script>
