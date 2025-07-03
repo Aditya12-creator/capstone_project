@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoShare - Share Your Moments</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="brand">
+                    <h1>📸 PhotoShare</h1>
+                </div>
+                <nav class="nav-links">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#upload" class="nav-link">Upload</a>
+                    <a href="#profile" class="nav-link">Profile</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="welcome-banner">
+                    <h2>Welcome to PhotoShare</h2>
+                    <p>Share your favorite moments with friends and family</p>
+                </div>
+                
+                <div class="photos-grid" id="photosGrid">
+                    <!-- Photos will be dynamically loaded here -->
+                </div>
+            </section>
+
+            <!-- Upload Section -->
+            <section id="upload" class="section">
+                <div class="upload-container">
+                    <h2>Upload New Photo</h2>
+                    <form id="uploadForm" class="upload-form">
+                        <div class="file-upload">
+                            <label for="photoInput" class="file-label">
+                                <div class="upload-icon">📷</div>
+                                <span>Click to select photo</span>
+                            </label>
+                            <input type="file" id="photoInput" accept="image/*" class="file-input">
+                        </div>
+                        
+                        <div class="preview-container" id="previewContainer">
+                            <img id="previewImage" class="preview-image" alt="Preview">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="photoTitle">Title</label>
+                            <input type="text" id="photoTitle" placeholder="Enter photo title" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="photoDescription">Description</label>
+                            <textarea id="photoDescription" placeholder="Write a description..." rows="3"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Share Photo</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile" class="section">
+                <div class="profile-container">
+                    <div class="profile-header">
+                        <div class="profile-avatar">👤</div>
+                        <div class="profile-info">
+                            <h2>Beatle</h2>
+                            <p>Photography Enthusiast</p>
+                            <div class="profile-stats">
+                                <span><strong id="totalPhotos">0</strong> Photos</span>
+                                <span><strong id="totalLikes">0</strong> Likes</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-photos">
+                        <h3>My Photos</h3>
+                        <div class="photos-grid" id="userPhotosGrid">
+                            <!-- User photos will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Photo Modal -->
+    <div id="photoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImage" class="modal-image" alt="Full size photo">
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" id="modalLikeBtn">
+                        <span id="modalLikeIcon">❤️</span>
+                        <span id="modalLikeCount">0</span>
+                    </button>
+                </div>
+                <div class="comments-section">
+                    <h4>Comments</h4>
+                    <div id="commentsList" class="comments-list"></div>
+                    <form id="commentForm" class="comment-form">
+                        <input type="text" id="commentInput" placeholder="Add a comment..." required>
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
